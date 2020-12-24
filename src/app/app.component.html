@@ -1,2 +1,36 @@
 <router-outlet></router-outlet>
-app works
+
+<div class="header">
+  <div class="header-btns">
+    <button pButton class="lists-btn" type="button" label="SAVED LISTS" icon="pi pi-list"></button>
+    <button pButton class="p-button-text filter-btn" type="button" label="SAVED FILTERS" icon="pi pi-filter"></button>
+    <button pButton class="p-button-text history-btn" type="button" label="SEARCH HISTORY" icon="pi pi-check"></button>
+
+    <input pInputText class="search-input" type="text" placeholder="Search"/>
+  </div>
+
+  <div class="header-search">
+  </div>
+</div>
+
+<div class="body">
+  <p-table [value]="data">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Date</th>
+              <th>List Name</th>
+              <th>No. of Entities</th>
+              <th>Actions</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+          <tr>
+              <td>{{data.date | date:'MMM d'}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.number}}</td>
+              <td>{{data.entities}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
