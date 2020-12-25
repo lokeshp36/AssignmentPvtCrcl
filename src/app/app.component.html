@@ -7,7 +7,7 @@
       <button pButton class="p-button-text filter-btn mr-4" type="button" label="SAVED FILTERS" icon="pi pi-filter"></button>
       <button pButton class="p-button-text history-btn" type="button" label="SEARCH HISTORY" icon="pi pi-clock"></button>
 
-      <input pInputText class="search-input" type="text" placeholder="Search"/>
+      <input #searchField pInputText class="search-input" type="text" placeholder="Search" (input)="search(searchField.value)"/>
     </div>
 
     <div class="header-search">
@@ -49,7 +49,7 @@
         No description yet <span style="color: #074e71; font-weight: 700;">+Add Description</span>
       </div>
       <ul *ngIf="selectedId === 0 || selectedId" class="entity-list">
-        <li class="entity" *ngFor="let entity of data[selectedId].entities">{{ entity.name }}</li>
+        <li class="entity" *ngFor="let entity of originalData[selectedId].entities">{{ entity.name }}</li>
       </ul>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 export interface Entity {
     name;
@@ -17,15 +17,26 @@ export interface Data {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'AssignmentPvtCrcl';
   selectedId: number;
+  data: Data[];
+
+  ngOnInit() {
+    this.data = this.originalData;
+  }
 
   showDetails(id: number) {
     this.selectedId = this.selectedId === id ? null : id;
   }
 
-  data: Data[] = [
+  search(text: string) {
+    this.data = this.originalData.filter(_ => {
+      return _.name.toLowerCase().includes(text.toLowerCase());
+    })
+  }
+
+  originalData: Data[] = [
     {"id": 0, "date": new Date(2020, 4, 25), "name": "de Finibus Bonorum", "entities": [
       {"name": "Lorem Ipsum is", "number": "Orange"},
       {"name": "unknown printer", "number": "Black"},
