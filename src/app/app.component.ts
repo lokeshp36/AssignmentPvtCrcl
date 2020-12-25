@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 
-export interface Data {
-    date;
+export interface Entity {
     name;
     number;
-    entities;
+}
+
+export interface Data {
+    id;
+    date;
+    name;
+    entities: Entity[];
 }
 
 @Component({
@@ -14,17 +19,50 @@ export interface Data {
 })
 export class AppComponent {
   title = 'AssignmentPvtCrcl';
+  selectedId: number;
+
+  showDetails(id: number) {
+    this.selectedId = this.selectedId === id ? null : id;
+  }
 
   data: Data[] = [
-    {"date": new Date(2020, 8, 15), "name": 2012, "number": "Orange", "entities": "dsad231ff"},
-    {"date": new Date(2020, 4, 6), "name": 2011, "number": "Black", "entities": "gwregre345"},
-    {"date": new Date(2020, 2, 28), "name": 2005, "number": "Gray", "entities": "h354htr"},
-    {"date": new Date(2020, 7, 4), "name": 2003, "number": "Blue", "entities": "j6w54qgh"},
-    {"date": new Date(2020, 6, 31), "name": 1995, "number": "Orange", "entities": "hrtwy34"},
-    {"date": new Date(2020, 7, 9), "name": 2005, "number": "Black", "entities": "jejtyj"},
-    {"date": new Date(2020, 1, 19), "name": 2012, "number": "Yellow", "entities": "g43gr"},
-    {"date": new Date(2020, 9, 7), "name": 2013, "number": "Orange", "entities": "greg34"},
-    {"date": new Date(2020, 12, 13), "name": 2000, "number": "Black", "entities": "h54hw5"},
-    {"date": new Date(2020, 4, 25), "name": 2013, "number": "Red", "entities": "245t2s"}
+    {"id": 0, "date": new Date(2020, 4, 25), "name": "de Finibus Bonorum", "entities": [
+      {"name": "Lorem Ipsum is", "number": "Orange"},
+      {"name": "unknown printer", "number": "Black"},
+      {"name": "survived not only five centuries", "number": "Gray"},
+      {"name": "PageMaker", "number": "Black"},
+      {"name": "injected humour", "number": "Yellow"}
+    ]},
+    {"id": 1, "date": new Date(2020, 8, 15), "name": "Lorem Ipsum is", "entities": [
+      {"name": "Lorem Ipsum is", "number": "Orange"},
+      {"name": "unknown printer", "number": "Black"},
+      {"name": "survived not only five centuries", "number": "Gray"}
+    ]},
+    {"id": 2, "date": new Date(2020, 4, 6), "name": "unknown printer", "entities": []},
+    {"id": 3, "date": new Date(2020, 2, 28), "name": "survived not only five centuries", "entities": []},
+    {"id": 4, "date": new Date(2020, 7, 4), "name": "electronic typesetting", "entities": [
+      {"name": "Lorem Ipsum is", "number": "Orange"},
+      {"name": "unknown printer", "number": "Black"},
+      {"name": "survived not only five centuries", "number": "Gray"},
+      {"name": "PageMaker", "number": "Black"},
+      {"name": "injected humour", "number": "Yellow"}
+    ]},
+    {"id": 5, "date": new Date(2020, 6, 31), "name": "passages", "entities": [
+      {"name": "Lorem Ipsum is", "number": "Orange"},
+      {"name": "unknown printer", "number": "Black"},
+      {"name": "survived not only five centuries", "number": "Gray"},
+      {"name": "PageMaker", "number": "Black"},
+      {"name": "injected humour", "number": "Yellow"}
+    ]},
+    {"id": 6, "date": new Date(2020, 7, 9), "name": "PageMaker", "entities": []},
+    {"id": 7, "date": new Date(2020, 1, 19), "name": "injected humour", "entities": [
+      {"name": "Lorem Ipsum is", "number": "Orange"},
+      {"name": "unknown printer", "number": "Black"},
+      {"name": "survived not only five centuries", "number": "Gray"},
+      {"name": "PageMaker", "number": "Black"},
+      {"name": "injected humour", "number": "Yellow"}
+    ]},
+    {"id": 8, "date": new Date(2020, 9, 7), "name": "Richard McClintock", "entities": []},
+    {"id": 9, "date": new Date(2020, 12, 13), "name": "Extremes of Good and Evil", "entities": []}
   ];
 }
